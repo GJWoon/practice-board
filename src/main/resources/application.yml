@@ -36,7 +36,3 @@ spring:
     rest:
       detection-strategy: annotated
       base-path: /api
-<<<<<<< HEAD
-=======
-
->>>>>>> main
