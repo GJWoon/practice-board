@@ -31,4 +31,9 @@ spring:
   sql:
     init:
       mode: always
+  rest.data:
+  data:
+    rest:
+      detection-strategy: annotated
+      base-path: /api
 
