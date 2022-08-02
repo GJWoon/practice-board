@@ -19,7 +19,6 @@ import java.util.Set;
 @Getter
 @ToString
 @Table(
-        name = "article",
         indexes = {
         @Index(columnList = "title"),
         @Index(columnList = "hashTag"),
@@ -28,7 +27,7 @@ import java.util.Set;
 })
 @Entity
 @EntityListeners(AuditingEntityListener.class)
-public class Article {
+public class Article extends AuditingFields{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -48,18 +47,6 @@ public class Article {
     @OneToMany(mappedBy = "article", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @ToString.Exclude
     private final Set<ArticleComment> articleComments = new LinkedHashSet<>();
-
-    @CreatedDate
-    private LocalDateTime createdAt;
-
-    @CreatedBy
-    private String createdBy;
-
-    @LastModifiedDate
-    private LocalDateTime modifiedAt;
-
-    @LastModifiedBy
-    private String modifiedBy;
 
     protected Article() {
     }
