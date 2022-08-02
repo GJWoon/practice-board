@@ -15,7 +15,6 @@ import java.util.LinkedHashSet;
 import java.util.Objects;
 import java.util.Set;
 
-
 @Getter
 @ToString
 @Table(
@@ -26,19 +25,15 @@ import java.util.Set;
         @Index(columnList = "createdBy")
 })
 @Entity
-@EntityListeners(AuditingEntityListener.class)
 public class Article extends AuditingFields{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @Setter
     @Column(nullable = false)
     private String title;
-
     @Setter
     private String hashTag;
-
     @Setter
     @Column(nullable = false, length = 10000)
     private String content;
@@ -50,17 +45,14 @@ public class Article extends AuditingFields{
 
     protected Article() {
     }
-
     public Article(String title, String hashTag, String content) {
         this.title = title;
         this.hashTag = hashTag;
         this.content = content;
     }
-
     public static Article of(String title, String hashTag, String content) {
         return new Article(title, hashTag, content);
     }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -68,7 +60,6 @@ public class Article extends AuditingFields{
         Article article = (Article) o;
         return id != null && id.equals(article.id);
     }
-
     @Override
     public int hashCode() {
         return Objects.hash(id);

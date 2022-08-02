@@ -19,6 +19,7 @@ import java.time.LocalDateTime;
 @MappedSuperclass
 @Getter
 @ToString
+@EntityListeners(AuditingEntityListener.class)
 public class AuditingFields {
 
     @CreatedDate
